@@ -38,9 +38,8 @@ io.on('connection', (socket) => {
     console.log(`Command sent from browser ${command.length}, ${command}`);
     try {
       tello.send(command, 0, command.length, PORT, HOST, errorHandler);
-    } catch ( error) {
+    } catch ( error ) {
       console.error(error)
-      console.log("kurwa nie działa")
     }
   })
   socket.emit('status', 'CONNECTED');
