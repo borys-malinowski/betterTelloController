@@ -1,9 +1,12 @@
 import  { clearSocket } from "./socket";
+import Button from "./Components/Button";
+
 
 const Commands = () => {
 
- return (<div>
-    <button onClick={() => {clearSocket.emit('command', 'battery')}}>BATTERY CHECK</button>
+ return (
+ <div>
+    <Button onClick={() => {clearSocket.emit('command', 'battery')}}></Button>
     <button onClick={() => {clearSocket.emit('command', 'command')}}>READY</button>
     <button onClick={() => {clearSocket.emit('command', 'takeoff')}}>TAKE OFF</button>
     <button onClick={() => {clearSocket.emit('command', 'land')}}>LAND</button>
@@ -15,6 +18,6 @@ const Commands = () => {
     <button onClick={() => {clearSocket.emit('command', 'flip b')}}>FLIP BACK</button>
     <button onClick={() => {clearSocket.emit('command', 'emergency')}}>EMERGENCY</button>
     
-</div>)
+</div>);
 };
 export default Commands;
