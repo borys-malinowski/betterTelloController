@@ -1,9 +1,7 @@
-import Commands from './command';
+import Commands from "./command";
 
 function App() {
-  return (
-    <Commands/>
-  );
+  return <Commands />;
 }
 
 export default App;

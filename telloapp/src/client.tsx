@@ -1,8 +1,8 @@
 import socket from "./socket";
-import { useState } from '@hookstate/core';
+import { useState } from "@hookstate/core";
 
 function useSocket() {
-  const socketState = useState(socket)
+  const socketState = useState(socket);
   const statusState = useState("DISCONNECTED");
   socketState.get().on("status", (message: string) => {
     console.log(`MESSAGE FROM SOCKET${message}`);
