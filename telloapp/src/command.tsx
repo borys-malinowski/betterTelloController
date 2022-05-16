@@ -2,95 +2,105 @@ import { clearSocket } from "./socket";
 import Button from "./Components/Button";
 import styled from "@emotion/styled";
 
-const StyledHeader = styled.h3`
-  :hover {
-    color: white;
-    border-color: coral;
-  }
+const StyledPanel = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 `;
-
 const Commands = () => {
   return (
-    <div>
+    <StyledPanel>
       <Button
         onClick={() => {
           clearSocket.emit("command", "battery");
         }}
         img="emergency.jpeg"
       >
-        <StyledHeader>battery</StyledHeader>
+        BATERY
       </Button>
-      <button
+      <Button
         onClick={() => {
           clearSocket.emit("command", "command");
         }}
+        img=""
       >
         READY
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           clearSocket.emit("command", "takeoff");
         }}
+        img=""
       >
         TAKE OFF
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           clearSocket.emit("command", "land");
         }}
+        img=""
       >
         LAND
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           clearSocket.emit("command", "up 20");
         }}
+        img=""
       >
         UP 20
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           clearSocket.emit("command", "down 20");
         }}
+        img=""
       >
         DOWN 20
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           clearSocket.emit("command", "flip l");
         }}
+        img=""
       >
         FLIP LEFT
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           clearSocket.emit("command", "flip r");
         }}
+        img=""
       >
         FLIP RIGGHT
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           clearSocket.emit("command", "flip f");
         }}
+        img=""
       >
         FLIP FORWARD
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           clearSocket.emit("command", "flip b");
         }}
+        img=""
       >
         FLIP BACK
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           clearSocket.emit("command", "emergency");
         }}
+        img=""
       >
         EMERGENCY
-      </button>
-    </div>
+      </Button>
+    </StyledPanel>
   );
 };
 export default Commands;

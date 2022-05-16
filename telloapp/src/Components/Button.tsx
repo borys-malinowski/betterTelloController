@@ -12,15 +12,16 @@ type StyledButtonProps = {
 const StyledButton = styled.button<StyledButtonProps>`
   font-size: 1em;
   &:hover {
-    //filter: blur(10px);
     color: red;
   }
-  margin: 1em;
-  padding: 0.25em 1em;
+  &:active {
+    background-color: aliceblue;
+    border-width: 3px;
+  }
+  padding: 1rem;
   border: 2px solid palevioletred;
-  border-radius: 3px;
-  width: 80px;
-  height: 80px;
+  border-radius: 10px;
+  flex-grow: 1;
   background-image: ${({ img }) => {
     return `url(/images/${img})`;
   }};
