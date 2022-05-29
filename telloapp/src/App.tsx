@@ -1,7 +1,11 @@
 import Commands from "./command";
+import DroneState from "./hooks/droneState";
+
 
 function App() {
-  return <Commands />;
+  return( <><Commands /><DroneState /></>)
+
+ 
 }
 
 export default App;
