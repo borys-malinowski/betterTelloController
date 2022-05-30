@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {clearSocket} from '../socket'
+import {DroneStateType} from "../../../backend/fly"
 
 function useDroneState() {
     const [telloState, setTelloState] = useState<DroneStateType | null>(null);
@@ -10,25 +11,6 @@ function useDroneState() {
 
     return telloState
 };
-
-type DroneStateType = {
-    pitch: number,
-    roll: number,
-    yaw: number,
-    vgx: number,
-    vgy: number,
-    vgz: number,
-    templ: number,
-    temph: number,
-    tof: number,
-    h: number,
-    bat: number,
-    baro: number,
-    time: number,
-    agx: number,
-    agy: number,
-    agz: number,
-}
 
 const DroneState =() => {
     const droneState = useDroneState();
