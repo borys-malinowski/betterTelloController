@@ -1,32 +1,12 @@
-import dgram, { Socket as DgramSocket } from "dgram";
-import express, { Express } from "express";
-import { Server as HTTPServer } from "http";
-import { Server, Socket } from "socket.io";
-import DroneStateType from "DroneStateType"
-import errorHandler from "errorHandler"
-
-
-type ParsedState = { [key in keyof DroneStateType]: DroneStateType };
-type ParsedStateAsTuple = [keyof DroneStateType, DroneStateType];
-
-const PORT: number = 8889;
-const STATEPORT: number = 8890;
-const HOST: string = "192.168.10.1";
-const HOSTPORT: string = "0.0.0.0";
-
-const telloSocket: DgramSocket = dgram.createSocket("udp4");
-telloSocket.bind(PORT);
-
-const telloState: DgramSocket = dgram.createSocket("udp4");
-telloState.bind(STATEPORT, HOSTPORT);
-
-const app: Express = express();
-
-const server: HTTPServer = app.listen(6767, (): void => {
-  console.log("socket io server ip and running");
-});
-
-const io: Server = new Server(server);
+import { Socket } from "socket.io";
+import DroneStateType from "DroneStateType";
+import errorHandler from "./errorHandler";
+import telloSocket from "./telloSocket";
+import telloState from "./telloState";
+import io from "./expressServer";
+import ParsedState from "./typeParsedState";
+import ParsedStateAsTuple from "./typeParsedStateAsTuple";
+import { HOST, PORT } from "./constants";
 
 io.on("connection", (socket: Socket): void => {
   telloSocket.on("error", ({ message }: Error): void => {

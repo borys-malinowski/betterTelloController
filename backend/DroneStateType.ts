@@ -1,4 +1,4 @@
-type DroneStateType = {
+export type DroneStateType = {
   pitch: number;
   roll: number;
   yaw: number;
