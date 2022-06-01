@@ -1,4 +1,4 @@
-import DroneStateType from "DroneStateType"
+import DroneStateType from "types/droneStateType"
 
 type ParsedState = { [key in keyof DroneStateType]: DroneStateType };
 

@@ -14,7 +14,7 @@ const Commands = () => {
     <StyledPanel>
       <Button
         onClick={() => {
-          clearSocket.emit("command", "battery");
+          clearSocket.emit("command", "battery?");
         }}
         img="emergency.jpeg"
       >

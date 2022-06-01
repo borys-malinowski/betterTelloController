@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { clearSocket } from "../socket";
-import { DroneStateType } from "../../../backend/DroneStateType";
+import { DroneStateType } from "../../../backend/types/droneStateType";
 
 function useDroneState() {
   const [telloState, setTelloState] = useState<DroneStateType | null>(null);
   useEffect(() => {
-    console.log("working...");
     clearSocket.on("dronestate", (data) => setTelloState(data));
   }, []);
 
@@ -17,7 +16,7 @@ const DroneState = () => {
   return (
     <div>
       <p>
-        <>Drone State: {droneState?.agz}</>
+        <>Drone State: {droneState?.yaw}</>
       </p>
     </div>
   );

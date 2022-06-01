@@ -1,11 +1,11 @@
 import { Socket } from "socket.io";
-import DroneStateType from "DroneStateType";
+import DroneStateType from "types/droneStateType";
 import errorHandler from "./errorHandler";
-import telloSocket from "./telloSocket";
-import telloState from "./telloState";
-import io from "./expressServer";
-import ParsedState from "./typeParsedState";
-import ParsedStateAsTuple from "./typeParsedStateAsTuple";
+import telloSocket from "./sockets/telloSocket";
+import telloState from "./sockets/telloState";
+import io from "./server/expressServer";
+import ParsedState from "./types/typeParsedState";
+import ParsedStateAsTuple from "./types/typeParsedStateAsTuple";
 import { HOST, PORT } from "./constants";
 
 io.on("connection", (socket: Socket): void => {
@@ -15,11 +15,12 @@ io.on("connection", (socket: Socket): void => {
   });
 
   telloSocket.on("message", (message: Buffer): void => {
-    console.log(`drone tell: ${message}`);
+    const messages = message.toString()
+    io.emit('droneMessage', messages)
   });
 
   telloState.on("error", ({ message }: Error): void => {
-    console.log(`server error:\n${message}`);
+    console.error(`server error:\n${message}`);
     telloSocket.close();
   });
   telloState.on("message", (state: Buffer): void => {
@@ -33,11 +34,9 @@ io.on("connection", (socket: Socket): void => {
         return { [key]: value } as ParsedState;
       });
     const fixedParsedState: DroneStateType = Object.assign({}, ...parsedState);
-    console.log(`drone position: ${fixedParsedState}`);
     io.emit("dronestate", fixedParsedState);
   });
   socket.on("command", (command: string): void => {
-    console.log(`Command sent from browser ${command.length}, ${command}`);
     try {
       telloSocket.send(command, 0, command.length, PORT, HOST, errorHandler);
     } catch (error) {
