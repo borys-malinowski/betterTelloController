@@ -100,6 +100,22 @@ const Commands = () => {
       >
         EMERGENCY
       </Button>
+      <Button
+        onClick={() => {
+          clearSocket.emit("command", "streamon");
+        }}
+        img=""
+      >
+        STREAM ON
+      </Button>
+      <Button
+        onClick={() => {
+          clearSocket.emit("command", "streamoff");
+        }}
+        img=""
+      >
+        STREAM OFF
+      </Button>
     </StyledPanel>
   );
 };

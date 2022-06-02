@@ -1,5 +1,5 @@
 import { Socket } from "socket.io";
-import DroneStateType from "types/droneStateType";
+import DroneStateType from "src/types/droneStateType";
 import errorHandler from "./errorHandler";
 import telloSocket from "./sockets/telloSocket";
 import telloState from "./sockets/telloState";
@@ -7,12 +7,17 @@ import io from "./server/expressServer";
 import ParsedState from "./types/typeParsedState";
 import ParsedStateAsTuple from "./types/typeParsedStateAsTuple";
 import { HOST, PORT } from "./constants";
+import telloStream from "./sockets/telloStream";
 
 io.on("connection", (socket: Socket): void => {
   telloSocket.on("error", ({ message }: Error): void => {
     console.error(`server error:\n${message}`);
     telloSocket.close();
   });
+
+  telloStream.on("somethink",  video => {
+    console.log(video);
+  })
 
   telloSocket.on("message", (message: Buffer): void => {
     const messages = message.toString()

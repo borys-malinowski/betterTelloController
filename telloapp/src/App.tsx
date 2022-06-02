@@ -1,6 +1,6 @@
 import Commands from "./command";
-import DroneMessage from "./hooks/droneMessage";
-import DroneState from "./hooks/droneState";
+import DroneMessage from "./hooks/useDroneMessage";
+import DroneState from "./hooks/useDroneState";
 
 
 function App() {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { clearSocket } from "../socket";
-import { droneMessageType } from "../../../backend/types/droneMessageType";
+import { droneMessageType } from "../../../backend/src/types/droneMessageType";
 
 function useDroneMessage() {
   const [telloMessage, setTelloMessage] = useState<droneMessageType |null>(null);
@@ -19,7 +19,7 @@ const DroneMessage = () => {
         <>Drone Message: {droneMessage}</>
       </p>
     </div>
-  );
+  ); // osobny plik
 };
 
 export default DroneMessage;

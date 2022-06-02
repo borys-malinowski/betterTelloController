@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { clearSocket } from "../socket";
-import { DroneStateType } from "../../../backend/types/droneStateType";
+import { DroneStateType } from "../../../backend/src/types/droneStateType";
 
 function useDroneState() {
   const [telloState, setTelloState] = useState<DroneStateType | null>(null);
