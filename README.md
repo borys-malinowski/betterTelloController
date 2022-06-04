@@ -1,14 +1,16 @@
+**Project in progress ...**
+
 # 📚 About backend
 
 ## 🚁 This is simple DJI tello browser controller. I use socket.io to connect to UDP in drone.
 
----
+&nbsp;
 
 # 🕹️ Usage
 
 ## 📶 Firstly You must be connected with the drone by his own Wi-Fi.
 
----
+&nbsp;
 
 ## 💻 To start the server you must be in backend folder and paste this commands in terminal:
 
@@ -23,6 +25,8 @@ npm run start
 ```
 Socket.io is worknig...
 ```
+
+&nbsp;
 
 # 📚 About frontend
 
@@ -41,7 +45,11 @@ npm run start
 
 <!-- ![telloapp]() -->
 
+&nbsp;
+
 Firstly you must push READY button to start sending the commands to drone.
+
+&nbsp;
 
 # 🛠️ Used languages and tools:
 
@@ -59,4 +67,4 @@ Firstly you must push READY button to start sending the commands to drone.
 
 ![Git](https://img.icons8.com/color/40/git.png)
 
-![Java Script](https://img.icons8.com/fluency-systems-regular/40/markdown.png)
+![Markdown](https://img.icons8.com/ios-glyphs/40/markdown.png)
