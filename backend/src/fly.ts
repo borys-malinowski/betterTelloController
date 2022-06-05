@@ -15,9 +15,9 @@ io.on("connection", (socket: Socket): void => {
     telloSocket.close();
   });
 
-  telloStream.on("somethink",  video => {
-    console.log(video);
-  })
+  telloStream.on("stream",  (video): void => {
+    io.emit("droneStream", video)
+  });
 
   telloSocket.on("message", (message: Buffer): void => {
     const messages = message.toString()
