@@ -1,11 +1,70 @@
-# About this project
+**Project in progress ...**
 
-## Used languages and tools
+# 📚 About backend
 
-![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
+## 🚁 This is simple DJI tello browser controller. I use socket.io to connect to UDP in drone.
 
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+&nbsp;
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+# 🕹️ Usage
 
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+## 📶 Firstly You must be connected with the drone by his own Wi-Fi.
+
+&nbsp;
+
+## 💻 To start the server you must be in backend folder and paste this commands in terminal:
+
+```
+npm install
+npm run compile
+npm run start
+```
+
+✔ When all process will be fine in terminal you can see:
+
+```
+Socket.io is worknig...
+```
+
+&nbsp;
+
+# 📚 About frontend
+
+## Frontend is a basic react app write with typescript and emotion.
+
+## 🕹️Usage:
+
+### To start the frontend you must be in telloapp folder and type this commands in terminal:
+
+```
+npm install
+npm run start
+```
+
+✔ When all commands will be fine in new card in your browser you can see this app:
+
+<!-- ![telloapp]() -->
+
+&nbsp;
+
+Firstly you must push READY button to start sending the commands to drone.
+
+&nbsp;
+
+# 🛠️ Used languages and tools:
+
+![NPM](https://img.icons8.com/color/40/npm.png)
+
+![TypeScript](https://img.icons8.com/color/40/typescript.png)
+
+![Java Script](https://img.icons8.com/color/40/javascript--v1.png)
+
+<img src="https://socket.io/images/logo-dark.svg" alt="socketio" width="40"></img>
+
+![React](https://img.icons8.com/officel/40/react.png)
+
+![Visual Studio Code](https://img.icons8.com/color/40/visual-studio-code-2019.png)
+
+![Git](https://img.icons8.com/color/40/git.png)
+
+![Markdown](https://img.icons8.com/ios-glyphs/40/markdown.png)
