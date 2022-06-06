@@ -14,11 +14,7 @@ function useDroneStream() {
 const DroneStream = () => {
   const droneStream = useDroneStream();
   return (
-    <div>
-      <p>
-        <>Drone Stream: {droneStream}</>
-      </p>
-    </div>
+    <p>${droneStream}</p>
   );
 };
 

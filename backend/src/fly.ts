@@ -15,13 +15,13 @@ io.on("connection", (socket: Socket): void => {
     telloSocket.close();
   });
 
-  telloStream.on("stream",  (video): void => {
-    io.emit("droneStream", video)
+  telloStream.on("stream", (video): void => {
+    io.emit("droneStream", video);
   });
 
   telloSocket.on("message", (message: Buffer): void => {
-    const messages = message.toString()
-    io.emit('droneMessage', messages)
+    const messages = message.toString();
+    io.emit("droneMessage", messages);
   });
 
   telloState.on("error", ({ message }: Error): void => {

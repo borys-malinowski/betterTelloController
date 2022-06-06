@@ -2,7 +2,7 @@
     "compilerOptions": {
       "incremental": true,
       "target": "esnext",
-      "lib": ["esnext"],
+      "lib": ["esnext","es6", "dom"],
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
       "strict": true,
@@ -31,6 +31,6 @@
       "baseUrl": ".",
       "outDir": "dist"
     },
-    "include": ["."],
+    "include": [".", "../telloapp/src/hooks/addVideoStream.ts"],
     "exclude": ["node_modules", "dist"]
   }
