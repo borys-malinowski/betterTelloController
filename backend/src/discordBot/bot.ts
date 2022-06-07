@@ -4,6 +4,7 @@ import getTakeoff from "./getTakeoff";
 import {PREFIX} from "./formatMessageContent"
 import { config } from "dotenv";
 import Options from "./typeOptions";
+import getStart from "./getStart";
 
 config()
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
@@ -13,9 +14,12 @@ const getCommandMapper = async (message: Message<boolean>) => {
     const options: Options= {
         takeoff: async () => {
             await getTakeoff(message);
+        },
+        start: async () => {
+            await getStart(message);
         }
     }
-    await options[options.hasOwnProperty(cmdName) ? cmdName : "default"]()
+    await options[options.hasOwnProperty(cmdName) ? cmdName : "default"](message)
 };
 
 client.on("messageCreate", async (message) => {

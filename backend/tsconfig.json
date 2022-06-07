@@ -31,6 +31,6 @@
       "baseUrl": ".",
       "outDir": "dist"
     },
-    "include": [".", "../telloapp/src/hooks/addVideoStream.ts"],
+    "include": ["./"],
     "exclude": ["node_modules", "dist"]
   }
