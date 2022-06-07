@@ -5,12 +5,13 @@
   "main": "fly.js",
   "scripts": {
     "compile": "tsc",
-    "start": "node ./dist/fly.js",
-    "startbot": "node ./dist/discordBot/bot.js"
+    "start": "node ./dist/backend/src/fly.js",
+    "startbot": "node ./dist/backend/src/discordBot/bot.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hookstate/core": "^4.0.0-rc.3",
     "discord-api-types": "^0.33.4",
     "discord.js": "^13.8.0",
     "dotenv": "^16.0.1",
