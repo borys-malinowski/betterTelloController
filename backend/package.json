@@ -5,8 +5,7 @@
   "main": "fly.js",
   "scripts": {
     "compile": "tsc",
-    "start": "node ./dist/backend/src/fly.js",
-    "startbot": "node ./dist/backend/src/discordBot/bot.js"
+    "start": "node ./dist/backend/src/fly.js"
   },
   "author": "",
   "license": "ISC",
