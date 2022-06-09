@@ -1,8 +1,8 @@
 import { Message } from 'discord.js';
-import { clearSocket } from "../../../telloapp/src/socket";
+import socketSend from "../fly"
 
 const getTakeoff = async (message: Message<boolean>) => {
-    clearSocket.emit("command", "takeoff");
+    socketSend("takeoff"); 
         message.channel.send(`takeoff`) ;
     }
    

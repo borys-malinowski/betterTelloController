@@ -15,6 +15,12 @@ import {PREFIX} from "./discordBot/formatMessageContent"
 import { config } from "dotenv";
 import Options from "./discordBot/typeOptions";
 import getStart from "./discordBot/getStart";
+import getLand from "./discordBot/getLand";
+
+const socketSend = (command:string) => {
+  telloSocket.send(command, 0, command.length, PORT, HOST, errorHandler);
+}
+export default socketSend;
 
 config()
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
@@ -27,6 +33,9 @@ const getCommandMapper = async (message: Message<boolean>) => {
         },
         start: async () => {
             await getStart(message);
+        },
+        land: async () => {
+          await getLand(message);
         }
     }
     await options[options.hasOwnProperty(cmdName) ? cmdName : "default"](message)
@@ -78,9 +87,10 @@ io.on("connection", (socket: Socket): void => {
   });
   socket.on("command", (command: string): void => {
     try {
-      telloSocket.send(command, 0, command.length, PORT, HOST, errorHandler);
+      socketSend(command); // to ws funkcje i tutaj wywołanie i atak samo wywołanie w bocie
     } catch (error) {
       console.error(error);
     }
   });
 });
+
