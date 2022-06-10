@@ -1,4 +1,4 @@
-**Project in progress ...**
+**Project in progress actually working on discord bot controller...**
 
 # 📚 About backend
 
