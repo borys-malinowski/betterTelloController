@@ -28,7 +28,7 @@ const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const getCommandMapper = async (message: Message<boolean>) => {
     const [cmdName] = formatMessageContent(message.content)
     const options: Options= {
-        takeoff: async () => {
+        drone: async () => {
             await getTakeoff(message);
         },
         start: async () => {
