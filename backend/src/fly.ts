@@ -10,12 +10,11 @@ import { HOST, PORT } from "./constants";
 import telloStream from "./sockets/telloStream";
 import {Client, Message} from 'discord.js';
 import formatMessageContent from "./discordBot/formatMessageContent";
-import getTakeoff from "./discordBot/getTakeoff";
+import getCommands from "./discordBot/getCommands";
 import {PREFIX} from "./discordBot/formatMessageContent"
 import { config } from "dotenv";
 import Options from "./discordBot/typeOptions";
-import getStart from "./discordBot/getStart";
-import getLand from "./discordBot/getLand";
+
 
 const socketSend = (command:string) => {
   telloSocket.send(command, 0, command.length, PORT, HOST, errorHandler);
@@ -29,14 +28,8 @@ const getCommandMapper = async (message: Message<boolean>) => {
     const [cmdName] = formatMessageContent(message.content)
     const options: Options= {
         drone: async () => {
-            await getTakeoff(message);
+            await getCommands(message);
         },
-        start: async () => {
-            await getStart(message);
-        },
-        land: async () => {
-          await getLand(message);
-        }
     }
     await options[options.hasOwnProperty(cmdName) ? cmdName : "default"](message)
 };
