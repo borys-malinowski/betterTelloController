@@ -14,12 +14,15 @@ import getCommands from "./discordBot/getCommands";
 import {PREFIX} from "./discordBot/formatMessageContent"
 import { config } from "dotenv";
 import Options from "./discordBot/typeOptions";
+import sendMessage from "./sendMessage";
 
 
 const socketSend = (command:string) => {
   telloSocket.send(command, 0, command.length, PORT, HOST, errorHandler);
 }
 export default socketSend;
+
+
 
 config()
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
@@ -57,8 +60,7 @@ io.on("connection", (socket: Socket): void => {
   });
 
   telloSocket.on("message", (message: Buffer): void => {
-    const messages = message.toString();
-    io.emit("droneMessage", messages);
+    sendMessage(message)
   });
 
   telloState.on("error", ({ message }: Error): void => {
@@ -80,7 +82,7 @@ io.on("connection", (socket: Socket): void => {
   });
   socket.on("command", (command: string): void => {
     try {
-      socketSend(command); // to ws funkcje i tutaj wywołanie i atak samo wywołanie w bocie
+      socketSend(command);
     } catch (error) {
       console.error(error);
     }
