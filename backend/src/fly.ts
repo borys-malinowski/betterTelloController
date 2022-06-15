@@ -1,12 +1,10 @@
 import { Socket } from "socket.io";
 import DroneStateType from "src/types/droneStateType";
-import errorHandler from "./errorHandler";
 import telloSocket from "./sockets/telloSocket";
 import telloState from "./sockets/telloState";
 import io from "./server/expressServer";
 import ParsedState from "./types/typeParsedState";
 import ParsedStateAsTuple from "./types/typeParsedStateAsTuple";
-import { HOST, PORT } from "./constants";
 import telloStream from "./sockets/telloStream";
 import {Client, Message} from 'discord.js';
 import formatMessageContent from "./discordBot/formatMessageContent";
@@ -14,13 +12,11 @@ import getCommands from "./discordBot/getCommands";
 import {PREFIX} from "./discordBot/formatMessageContent"
 import { config } from "dotenv";
 import Options from "./discordBot/typeOptions";
-import sendMessage from "./sendMessage";
+import sendMessage from "./sockets/sendMessage";
+import socketSend from "./sockets/socketSend";
 
 
-const socketSend = (command:string) => {
-  telloSocket.send(command, 0, command.length, PORT, HOST, errorHandler);
-}
-export default socketSend;
+
 
 
 

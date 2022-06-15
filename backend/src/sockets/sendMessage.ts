@@ -1,4 +1,4 @@
-import io from "./server/expressServer";
+import io from "../server/expressServer";
 
 const sendMessage = (message: Buffer) => {
     const messages = message.toString();
