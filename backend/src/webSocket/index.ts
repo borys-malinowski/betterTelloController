@@ -1,41 +1,38 @@
 import { Server } from "socket.io";
 import createWebSocket from "./utils/createWebSocket/createWebSocket";
-import socketSend from "../sockets/socketSend";
 import eventMapperUnwraper from "../utils/eventMapperUnwraper/eventMapperUnwraper";
-import telloSocket from "../sockets/telloSocket";
-import sendMessage from "../sockets/sendMessage";
-import telloState from "../sockets/telloState";
 import ParsedState from "../types/typeParsedState";
 import ParsedStateAsTuple from "../types/typeParsedStateAsTuple";
 import DroneStateType from "../types/droneStateType";
-import telloStream from "../sockets/telloStream";
 import { httpServer } from "../rest/index";
+import { socket, state, stream } from "tello";
+import sendMessage from "./utils/sendMessage/sendMessage";
 
 const io: Server = createWebSocket(
   httpServer,
   {
     command: (payload: string): void => {
       try {
-        socketSend(payload);
+        sendMessage(payload);
       } catch (error) {
         console.error(error);
       }
     },
   },
   (): void => {
-    eventMapperUnwraper(telloSocket, {
+    eventMapperUnwraper(socket, {
       error: ({ message }: Error): void => {
         console.error(`server error:\n${message}`);
-        telloSocket.close();
+        socket.close();
       },
       message: (message: Buffer): void => {
-        sendMessage(message);
+        sendMessage("message", message);
       },
     });
-    eventMapperUnwraper(telloState, {
+    eventMapperUnwraper(state, {
       error: ({ message }: Error): void => {
         console.error(`server error:\n${message}`);
-        telloSocket.close();
+        socket.close();
       },
       message: (state: Buffer): void => {
         const parseState: string = state.toString();
@@ -54,7 +51,7 @@ const io: Server = createWebSocket(
         io.emit("dronestate", fixedParsedState);
       },
     });
-    eventMapperUnwraper(telloStream, {
+    eventMapperUnwraper(stream, {
       stream: (video: Buffer): void => {
         io.emit("droneStream", video);
       },
