@@ -15,9 +15,9 @@
 ## 💻 To start the server you must be in backend folder and paste this commands in terminal:
 
 ```
-npm install
-npm run compile
-npm run start
+yarn
+yarn run compile
+yarn run start
 ```
 
 ✔ When all process will be fine in terminal you can see:
