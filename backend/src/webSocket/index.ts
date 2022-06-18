@@ -5,15 +5,21 @@ import ParsedState from "../types/typeParsedState";
 import ParsedStateAsTuple from "../types/typeParsedStateAsTuple";
 import DroneStateType from "../types/droneStateType";
 import { httpServer } from "../rest/index";
-import { socket, state, stream } from "tello";
-import sendMessage from "./utils/sendMessage/sendMessage";
+import { socket, stream } from "tello";
+import sendMessage from "../tello/utils/sendMessage/sendMessage";
+import { socketHost, socketPort } from "../constants";
+import errorHandler from "../errorHandler";
 
 const io: Server = createWebSocket(
   httpServer,
   {
     command: (payload: string): void => {
       try {
-        sendMessage(payload);
+        sendMessage(socket, payload, {
+          port: socketPort,
+          host: socketHost,
+          errorHandler,
+        });
       } catch (error) {
         console.error(error);
       }
@@ -26,10 +32,10 @@ const io: Server = createWebSocket(
         socket.close();
       },
       message: (message: Buffer): void => {
-        sendMessage("message", message);
+        sendMessage(socket, message.toString(), {});
       },
     });
-    eventMapperUnwraper(state, {
+    eventMapperUnwraper(socket, {
       error: ({ message }: Error): void => {
         console.error(`server error:\n${message}`);
         socket.close();

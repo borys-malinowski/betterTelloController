@@ -1,10 +1,17 @@
 import { Message } from "discord.js";
-import socketSend from "../sockets/socketSend";
 import formatMessageContent from "./formatMessageContent";
+import socket from "../tello";
+import sendMessage from "../tello/utils/sendMessage/sendMessage";
+import { socketPort, socketHost } from "../constants";
+import errorHandler from "../errorHandler";
 
-const getCommands = async (message: Message<boolean>) => {
+const getCommands = (message: Message<boolean>) => {
   const [_, command] = formatMessageContent(message.content);
-  await socketSend(command);
+  sendMessage(socket, command, {
+    port: socketPort,
+    host: socketHost,
+    errorHandler,
+  });
   message.channel.send(`${command}`);
 };
 

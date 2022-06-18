@@ -43,7 +43,9 @@
       "~discord/*": ["discord/*"],
       "~discord": ["discord/index"],
       "~webSocket/*": ["webSocket/*"],
-      "~webSocket": ["webSocket/index"]
+      "~webSocket": ["webSocket/index"],
+      "~tello/*": ["tello/*"],
+      "~tello": ["tello/index"]
     },
     "plugins": [
       {
