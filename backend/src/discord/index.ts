@@ -1,5 +1,6 @@
 import { Message } from "discord.js";
-import { PREFIX } from "../discordBot/formatMessageContent";
+import { prefix } from "~discord/constants/constants";
+
 import createClient from "./utils/createClient/createClient";
 import getCommandMapper from "./utils/getCommandMapper/getCommandMapper";
 
@@ -8,7 +9,7 @@ const client = createClient(process.env.DISCORD_BOT_TOKEN || "", {
     if (message.author.bot) {
       return;
     }
-    if (message.content.startsWith(PREFIX)) {
+    if (message.content.startsWith(prefix)) {
       await getCommandMapper(message);
     }
   },

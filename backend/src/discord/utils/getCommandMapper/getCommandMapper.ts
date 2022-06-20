@@ -1,7 +1,7 @@
 import { Message } from "discord.js";
-import formatMessageContent from "../../../discordBot/formatMessageContent";
-import getCommands from "../../../discordBot/getCommands";
-import Options from "../../../discordBot/typeOptions";
+import formatMessageContent from "~discord/utils/formatMessageContent/formatMessageContent";
+import getCommands from "~discord/utils/getCommands/getCommands";
+import Options from "~discord/types/typeOptions";
 
 const getCommandMapper = async (message: Message<boolean>) => {
   const [cmdName] = formatMessageContent(message.content);

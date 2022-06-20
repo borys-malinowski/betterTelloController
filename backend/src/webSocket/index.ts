@@ -7,8 +7,9 @@ import DroneStateType from "../types/droneStateType";
 import { httpServer } from "../rest/index";
 import { socket, stream } from "tello";
 import sendMessage from "../tello/utils/sendMessage/sendMessage";
-import { socketHost, socketPort } from "../constants";
-import errorHandler from "../errorHandler";
+import { socketPort } from "~tello/constants/ports";
+import { telloHost } from "~tello/constants/hosts";
+import errorHandler from "./errorHandler";
 
 const io: Server = createWebSocket(
   httpServer,
@@ -17,7 +18,7 @@ const io: Server = createWebSocket(
       try {
         sendMessage(socket, payload, {
           port: socketPort,
-          host: socketHost,
+          host: telloHost,
           errorHandler,
         });
       } catch (error) {
@@ -31,9 +32,13 @@ const io: Server = createWebSocket(
         console.error(`server error:\n${message}`);
         socket.close();
       },
-      message: (message: Buffer): void => {
-        sendMessage(socket, message.toString(), {});
-      },
+      // message: (message: Buffer): void => {
+      //   sendMessage(socket, message.toString(), {
+      //     port: 8889,
+      //     host: "192.168.10.2",
+      //     errorHandler,
+      //   });
+      // },
     });
     eventMapperUnwraper(socket, {
       error: ({ message }: Error): void => {

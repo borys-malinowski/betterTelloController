@@ -1,18 +1,20 @@
 import { Socket } from "dgram";
 
 const sendMessage = (
-  instance: Socket,
+  socket: Socket,
   message: string,
   {
     port,
     host,
-    errorHandler,
   }: {
     port?: number;
     host?: string;
     errorHandler?: (error: Error | null) => void;
   },
 ) => {
-  instance.send(message, 0, message.length, port, host, errorHandler);
+  socket.send(message, 0, message.length, port, host, (error) => {
+    console.log(error);
+  });
+  console.log(`send message: ${message}`);
 };
 export default sendMessage;

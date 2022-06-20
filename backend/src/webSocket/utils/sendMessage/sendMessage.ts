@@ -1,8 +1,7 @@
 import { Server } from "socket.io";
 
 const sendMessage = (instance: Server, event: string, message: Buffer) => {
-  const messages = message.toString();
-  instance.emit(event, messages);
+  instance.emit(event, message);
 };
 
 export default sendMessage;

@@ -1,3 +1,3 @@
-const mainPort: number = 8889;
+const mainPort: number = 6767;
 
 export default mainPort;
