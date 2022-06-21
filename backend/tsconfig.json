@@ -46,7 +46,9 @@
       "~webSocket/*": ["webSocket/*"],
       "~webSocket": ["webSocket/index"],
       "~tello/*": ["tello/*"],
-      "~tello": ["tello/index"]
+      "~tello": ["tello/index"],
+      "~wifi/*": ["wifi/*"],
+      "~wifi": ["wifi/index"]
     },
     "plugins": [
       {

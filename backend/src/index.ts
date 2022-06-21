@@ -4,3 +4,4 @@ import "~discord";
 import "~rest";
 import "~webSocket";
 import "~tello";
+import "~wifi";
