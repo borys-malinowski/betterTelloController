@@ -8,7 +8,7 @@ const config: Config.InitialOptions = {
   testTimeout: 100_000_000,
   setupFilesAfterEnv: ["jest-extended"],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: join(process.cwd(), "."),
+    prefix: join(process.cwd(), "src", "."),
   }),
 };
 
