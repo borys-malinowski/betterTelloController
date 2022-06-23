@@ -5,7 +5,7 @@ import ParsedState from "../types/typeParsedState";
 import ParsedStateAsTuple from "../types/typeParsedStateAsTuple";
 import DroneStateType from "../types/droneStateType";
 import { httpServer } from "../rest/index";
-import { socket, stream } from "tello";
+import { socket, stream } from "~tello";
 import sendMessage from "../tello/utils/sendMessage/sendMessage";
 import { socketPort } from "~tello/constants/ports";
 import { telloHost } from "~tello/constants/hosts";
