@@ -2,7 +2,6 @@
 	path = backend
 	url = https://github.com/borys-malinowski/betterTelloController-backend.git
 	branch = main
-	
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/borys-malinowski/betterTelloController-frontend.git
